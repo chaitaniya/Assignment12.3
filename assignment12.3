@@ -1,0 +1,36 @@
+Q.1What is meant by FlumeNG ?
+Ans.
+a)Apache Flume is a distributed, reliable, and available system for efficiently collecting, aggregating and
+moving large amounts of log data from many different sources to a centralized data store.
+b) Flume NG is work related to new major revision of Flume and is the subject of this post.
+c)At the time of writing this post Flume NG had gone through two internal milestones – NG Alpha 1, 
+and NG Alpha 2 and a formal incubatorrelease of Flume NG is in the works.
+d)At a high-level, Flume NG uses a single-hop message delivery guarantee semantics to provide end-to-end
+reliability for the system. To accomplish this, certain new concepts have been incorporated into its design,
+while certain other existing concepts have been either redefined, reused or dropped completely.
+
+Q.2Can Flume provides 100 % reliability to the data flow?
+Ans)
+Yes,it provides end-to-end reliability to the flow.By default Flume uses a transactional 
+approach in the data flow.Sources and sinks encapsulated in a transactional repository 
+provides by the channels.These channels responsible to pass reliably from end-to-end
+in 2th flow.so it provides 100% reliability to the data flow.
+
+Q.3Can Flume can distributes data to multiple destinations?
+Yes,it supports multiplexing flow.The event flows from one sources to multiple channels and multiple destinations
+It's achieved by defining a flow multiplexer.Data flows are replicated to HDFS and another
+sink to destination and another destination is input to another agent.
+
+Q.4 Explain about the different channel types in Flume. And which channel type is
+faster?
+Ans.The 3 different built in channel types available in Flume are-
+
+MEMORY Channel – Events are read from the source into memory and passed to the sink.
+
+JDBC Channel – JDBC Channel stores the events in an embedded Derby database.
+
+FILE Channel –File Channel writes the contents to a file on the file system after reading the event from a source.
+The file is deleted only  after the contents are successfully delivered to the sink.
+
+MEMORY Channel is the fastest channel among the three however has the risk of data loss. 
+The channel that you choose completely depends on the nature of the big data application and the value of each event.
